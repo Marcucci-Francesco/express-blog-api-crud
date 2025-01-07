@@ -1,34 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const controller = require('../controllers/postsController');
 
 //Index
-router.get('/', (req, res) => {
-  res.send('Stampo tutti i post');
-})
+router.get('/', controller.index);
 
 //Show
-router.get('/:id', (req, res) =>{
-  res.send('Stampo solo un post con id =' + req.params.id)
-})
+router.get('/:id', controller.show);
 
 //Store
-router.post('/', (req, res) => {
-  res.send('Creo un nuovo post')
-})
+router.post('/', controller.store);
 
 //Update
-router.put('/:id', (req, res) => {
-  res.send("Modifica dell'intero elemento con id =" + req.params.id)
-})
+router.put('/:id', controller.update);
 
 //Modify
-router.patch('/:id', (req, res) => {
-  res.send("Modifica parziale dell'elemento con id =" + req.params.id)
-})
+router.patch('/:id', controller.modify);
 
 //Destroy
-router.delete('/:id', (req, res) => {
-  res.send("Eliminazione dell'elemnto con id =" + req.params.id)
-})
+router.delete('/:id', controller.destroy);
 
 module.exports = router;

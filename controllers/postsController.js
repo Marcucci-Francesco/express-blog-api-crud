@@ -1,33 +1,51 @@
 const posts = require('../data/posts');
 
 //Index
-router.get('/', (req, res) => {
-  res.send('Stampo tutti i post');
-})
+const index = (req, res) => {
+  res.json(posts);
+};
 
 //Show
-router.get('/:id', (req, res) =>{
-  res.send('Stampo solo un post con id =' + req.params.id)
-})
+const show = (req, res) =>{
+  const id = req.params.id
+  const post = posts.find(post => post.id == id);
+
+  res.json(post);
+};
 
 //Store
-router.post('/', (req, res) => {
+const store = (req, res) => {
   res.send('Creo un nuovo post')
-})
+};
 
 //Update
-router.put('/:id', (req, res) => {
+const update = (req, res) => {
   res.send("Modifica dell'intero elemento con id =" + req.params.id)
-})
+};
 
 //Modify
-router.patch('/:id', (req, res) => {
+const modify = (req, res) => {
   res.send("Modifica parziale dell'elemento con id =" + req.params.id)
-})
+};
 
 //Destroy
-router.delete('/:id', (req, res) => {
-  res.send("Eliminazione dell'elemnto con id =" + req.params.id)
-})
+const destroy = (req, res) => {
+  const id = req.params.id;
+  
+  const post = posts.find(post => post.id == id);
 
-module.exports = router;
+  posts.splice(posts.indexOf(post), 1);
+  res.sendStatus(204);
+
+  console.log(posts);
+
+};
+
+module.exports = {
+  index,
+  show,
+  store,
+  update,
+  modify,
+  destroy
+};
