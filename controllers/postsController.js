@@ -28,12 +28,33 @@ const show = (req, res) =>{
 
 //Store
 const store = (req, res) => {
-  res.send('Creo un nuovo post')
+  console.log(req.body);
+  
+  const id = posts.at(-1).id + 1;
+
+  const newPost = {
+    id,
+    ...req.body
+  };
+
+  posts.push(newPost);
+  res.status(201);
+
+  res.json(posts);
 };
 
 //Update
 const update = (req, res) => {
-  res.send("Modifica dell'intero elemento con id =" + req.params.id)
+  console.log(req.body);
+
+  const id = parseInt( req.params.id);
+  const newpPostUpdate = posts.find(post => post.id === id);
+
+  for (let key in req.body){
+    newpPostUpdate[key] = req.body[key]
+  };
+  
+  res.json(newpPostUpdate);
 };
 
 //Modify
