@@ -50,6 +50,15 @@ const update = (req, res) => {
   const id = parseInt( req.params.id);
   const newpPostUpdate = posts.find(post => post.id === id);
 
+  if (!newpPostUpdate){
+    res.status(404);
+    return res.json({
+      message: 'Post non trovato',
+      status: 404,
+      error: 'Not Found'
+    })
+  };
+
   for (let key in req.body){
     newpPostUpdate[key] = req.body[key]
   };
