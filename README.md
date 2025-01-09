@@ -45,3 +45,17 @@ Testiamolo con postman.
 ### Bonus
 - Quelli del giorno prima, se non già fatti
 - In Update, controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno stato 404 e un messaggio d’errore, sempre in formato JSON.
+<br>
+<br>
+<br>
+<br>
+
+Express Blog - API CRUD (parte 3)
+===
+Lavorare con la CRUD.
+## Consegna
+Dopo aver completato tutte le operazioni CRUD, completiamo le nostre API inserendo un middleware per la gestione delle rotte non registrate e uno per la gestione degli errori.
+- Se viene chiamato un endpoint inesistente, un middleware dovrà rispondere un messaggio e uno status appropriato.
+- Se viene generato un errore, un middleware si occuperà di rispondere con un messaggio e uno status appropriato.
+## Bonus
+- Creare un middleware che in caso di inserimento/modifica contolli la validità dei dati
