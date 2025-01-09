@@ -1,5 +1,6 @@
 const express = require('express');
 const postsRouter = require('./routers/routerPosts');
+const errorsHandler = require('./middlewares/errorsHandler');
 const app = express();
 const port = 3000;
 
@@ -10,6 +11,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/routerPosts', postsRouter);
+
+app.use(errorsHandler);
 
 app.listen(port, () => {
   console.log(`Sono in ascolto alla porta ${port}`);
